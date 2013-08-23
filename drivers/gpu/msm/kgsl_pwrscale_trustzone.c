@@ -135,7 +135,7 @@ static void tz_wake(struct kgsl_device *device, struct kgsl_pwrscale *pwrscale)
 
 #define HISTORY_SIZE 10
 
-static int ramp_up_threshold = 5500;
+static int ramp_up_threshold = 5000;
 module_param_named(simple_ramp_threshold, ramp_up_threshold, int, 0664);
 
 static unsigned int history[HISTORY_SIZE] = {0};
