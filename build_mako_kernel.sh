@@ -25,7 +25,7 @@ export PATH=$PATH:$ARM_EABI_TOOLCHAIN/bin:$ARM_EABI_TOOLCHAIN/arm-eabi/bin;
 
 
 # Build ID
-export LOCAL_VERSION="-Stock Xtra"
+export LOCAL_VERSION="-Stock-Xtra"
 export KBUILD_BUILD_USER=PSX
 export KBUILD_BUILD_HOST="SUPERTEST"
 
