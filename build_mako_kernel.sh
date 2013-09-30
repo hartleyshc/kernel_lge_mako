@@ -16,7 +16,7 @@ export DIRSRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )";
 export MODULES_DEST=$DIRSRC/vendor/psx/prebuilts/mako/system/lib/modules;
 
 # Kernel Source PATH
-export KERNELSRC=$DIRSRC/kernel/lge/mako;
+export KERNELSRC=$DIRSRC/kernel/$MANUFACTURER/$DEVICE;
 
 # Target gcc version
 export TARGET_GCC=4.7;
