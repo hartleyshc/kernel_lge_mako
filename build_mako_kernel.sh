@@ -10,7 +10,7 @@ export CC=$HOST_CC;
 export CXX=$HOST_CXX;
 
 # Source Directory PATH
-export DIRSRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )";
+export DIRSRC="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 # Where prebuilt modules will be stored for installation into the ROM
 export MODULES_DEST=$DIRSRC/vendor/psx/prebuilts/mako/system/lib/modules;
