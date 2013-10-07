@@ -355,8 +355,8 @@ MODFLAGS	= -DMODULE -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr -ffast-ma
 CFLAGS_MODULE   = -fno-pic $(MODFLAGS)
 AFLAGS_MODULE   = $(MODFLAGS)
 LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
-CFLAGS_KERNEL	= -fgcse-lm -fgcse-sm -fsched-spec-load -fforce-addr -ffast-math -fsingle-precision-constant -mtune=cortex-a8 -march=armv7-a -mfpu=neon -ftree-vectorize -funswitch-loops
-AFLAGS_KERNEL	=
+CFLAGS_KERNEL	= -mcpu=cortex-a9 -mtune=cortex-a15 -marm -march=armv7-a -mfpu=neon -funsafe-math-optimizations -ftree-vectorize
+AFLAGS_KERNEL	= -mcpu=cortex-a9 -mtune=cortex-a15 -marm -march=armv7-a -mfpu=neon -funsafe-math-optimizations -ftree-vectorize
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -372,15 +372,20 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 #
 # LINARO OPT
 #
-CFLAGS_A15 = -mcpu=cortex-a9 -march=armv7-a -mtune=cortex-a15 -mfpu=neon -ftree-vectorize -ffast-math -fsingle-precision-constant
+CFLAGS_A15 = -mcpu=cortex-a9 -march=armv7-a -mtune=cortex-a15 -mfpu=neon -funsafe-math-optimizations
 CFLAGS_MODULO = -fmodulo-sched -fmodulo-sched-allow-regmoves
-KERNEL_MODS	= $(CFLAGS_A15) $(CFLAGS_MODULO)
+KERNEL_MODS  = $(CFLAGS_A15) $(CFLAGS_MODULO)
 
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-		   -fno-delete-null-pointer-checks
+		   -fno-delete-null-pointer-checks \
+		   -ftree-vectorize \
+	           -mno-unaligned-access \
+	       	   -Wno-sizeof-pointer-memaccess \
+	       	   $(KERNEL_MODS)
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
