@@ -44,7 +44,7 @@ time make -j4 -C $KERNELSRC $J zImage ;
 
 if [ -e $KERNELSRC/arch/arm/boot/zImage ] ;
 then
-cp $KERNELSRC/arch/arm/boot/zImage -f $DIRSRC/device/$MANUFACTURER/$DEVICE-kernel/zImage;
+cp $KERNELSRC/arch/arm/boot/zImage -f $DIRSRC/device/$MANUFACTURER/$DEVICE-kernel/kernel;
 
 else
 echo "":
